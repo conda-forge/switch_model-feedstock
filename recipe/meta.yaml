@@ -2,12 +2,14 @@
 
 package:
   name: switch_model
-  version: 2.0.5.post2
+  version: 2.0.6
 
 source:
   # url: https://pypi.io/packages/source/s/switch_model/switch_model-{{ version }}.tar.gz
-  url: https://files.pythonhosted.org/packages/e9/b3/fd2dcec5972a846036b0ab3e821279af72e51e06c35eed46cbcc15375724/switch_model-2.0.5.post2.tar.gz
-  sha256: e87c71211d4a436dba70e217005eaff157a744d191be9e42a59d382f8f38e542
+  # can't automate URL generation lately; just have to read URL and SHA from 
+  # https://pypi.org/project/switch-model/#files 
+  url: https://files.pythonhosted.org/packages/98/fb/332ff8d29b9cf6b271d2fc94b5cdd482ce0158d04d5858f2f63a129a353f/switch_model-2.0.6.tar.gz
+  sha256: 179919ea051821be2e8369a7ea978a92341e8969c47962ab3cf84e55a73ff68b
 
 build:
   noarch: python
@@ -15,16 +17,15 @@ build:
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   entry_points:
     - switch=switch_model.main:main
-
 requirements:
   build:
   host:
     - python
     - pip
   run:
-    - python
-    - pyomo <5.6.9a0
-    - pyutilib <6.0a0
+    - python >=2.7.12
+    - pyomo <=5.6.8
+    - pyutilib <=5.7.3
     - pint
     - testfixtures
     - pandas
