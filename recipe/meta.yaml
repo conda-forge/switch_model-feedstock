@@ -13,7 +13,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 2
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   entry_points:
     - switch=switch_model.main:main
@@ -46,7 +46,7 @@ test:
 
 about:
   home: http://switch-model.org
-  license: Apache 2.0
+  license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
   summary: 'A modern platform for planning high-renewable power systems'
