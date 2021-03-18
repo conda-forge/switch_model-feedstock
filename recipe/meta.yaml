@@ -46,7 +46,7 @@ test:
 
 about:
   home: http://switch-model.org
-  license: Apache 2.0
+  license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
   summary: 'A modern platform for planning high-renewable power systems'
