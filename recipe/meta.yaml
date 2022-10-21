@@ -1,19 +1,19 @@
-# {% set version = "2.0.4" %}
+# {% set version = "2.0.5" %}
 
 package:
   name: switch_model
-  version: 2.0.6
+  version: 2.0.5
 
 source:
   # url: https://pypi.io/packages/source/s/switch_model/switch_model-{{ version }}.tar.gz
-  # can't automate URL generation lately; just have to read URL and SHA from 
-  # https://pypi.org/project/switch-model/#files 
-  url: https://files.pythonhosted.org/packages/98/fb/332ff8d29b9cf6b271d2fc94b5cdd482ce0158d04d5858f2f63a129a353f/switch_model-2.0.6.tar.gz
-  sha256: 179919ea051821be2e8369a7ea978a92341e8969c47962ab3cf84e55a73ff68b
+  # can't automate URL generation lately; just have to read URL and SHA from
+  # https://pypi.org/project/switch-model/#files
+  url: https://files.pythonhosted.org/packages/7c/cb/619851966d5965a79a91a144e410d1f4e6c6d7cb9ce471bd98712e910b3d/switch_model-2.0.5.tar.gz
+  sha256: 6dd2d6e1cf2a842e03a272131b4610062ee077ebd3ac5f30e80776ac929a4e43
 
 build:
   noarch: python
-  number: 2
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   entry_points:
     - switch=switch_model.main:main
