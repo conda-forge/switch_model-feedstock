@@ -13,7 +13,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha }}
 
 build:
@@ -25,10 +25,10 @@ build:
 requirements:
   build:
   host:
-    - python
+    - python {{ python_min }}
     - pip
   run:
-    - python {{ python_ver }}
+    - python >={{ python_min }}
     - pyomo {{ pyomo_ver }}
     - pint
     - testfixtures
@@ -36,6 +36,8 @@ requirements:
     - glpk
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - switch_model
   source_files:
