@@ -1,6 +1,7 @@
 {% set name = "switch_model" %}
 {% set version = "2.0.9.post0" %}
 {% set build_num = 0 %}
+{% set python_min = "3.7.2" %}
 {% set python_ver = ">=3.7.2,<3.14.0a0" %}
 {% set pyomo_ver = ">=6.0.0,<=6.9.1" %}
 # Get hash from https://pypi.org/project/switch-model/#files
@@ -13,7 +14,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha }}
 
 build:
@@ -25,10 +26,11 @@ build:
 requirements:
   build:
   host:
-    - python
+    - python {{ python_min }}
+    - setuptools
     - pip
   run:
-    - python {{ python_ver }}
+    - python >={{ python_min }}
     - pyomo {{ pyomo_ver }}
     - pint
     - testfixtures
@@ -36,6 +38,12 @@ requirements:
     - glpk
 
 test:
+  # Starting 1/1/2025, conda-forge recommends testing with minimum supported Python version
+  # to prevent incompatibilities from getting out the door 
+  # https://github.com/conda-forge/cfep/blob/main/cfep-25.md
+  requires:
+    - python {{ python_min }}
+
   imports:
     - switch_model
   source_files:
